@@ -1,0 +1,31 @@
+.repo {
+  width: 100%;
+  border: 2px solid lightgray;
+  border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.repo:last-child {
+  margin-bottom: 0px;
+}
+.repo-header-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.repo-header-stars {
+  margin-bottom: 5px;
+}
+.repo-header-stars span {
+  font-style: oblique;
+  font-size: 17px;
+}
+.repo-header-commit {
+  margin-bottom: 5px;
+}
+.repo-header-commit span {
+  font-style: oblique;
+  font-size: 17px;
+}

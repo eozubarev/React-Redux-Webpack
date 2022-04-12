@@ -1,22 +1,22 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCount } from '../reducers/ReposReducer'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import Main from './main/Main'
 import './app.less'
 
 const App = () => {
 
     const dispatch = useDispatch()
-    const count = useSelector(state => state.repos.count)
-
-    function onCountClick() {
-        dispatch(setCount(5))
-    }
 
   return (
-    <div className='app'>
-        <button onClick={()=>onCountClick()}>COUNT</button>
-        <div>{count}</div>
-    </div>
+    <Router>
+        <Routes>
+          <>
+            <Route path="/" element= { <Main/> } />
+          </>
+        </Routes>
+      </Router>
   )
 }
 

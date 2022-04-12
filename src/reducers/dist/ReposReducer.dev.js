@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = reposReducer;
-exports.setCount = void 0;
+exports.setRepos = void 0;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -12,13 +12,12 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var SET_COUNT = "SET_COUNT";
+var SET_REPOS = 'SET_REPOS';
 var defaultState = {
   // Будем получать сюда репозитории с Github
   items: [],
   // Будет true, если будут приходить данные
-  isFetching: true,
-  count: 0
+  isFetching: true
 };
 
 function reposReducer() {
@@ -26,22 +25,21 @@ function reposReducer() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case SET_COUNT:
+    case SET_REPOS:
       return _objectSpread({}, state, {
-        count: action.payload
+        items: action.payload.items
       });
-      break;
 
     default:
       return state;
   }
 }
 
-var setCount = function setCount(count) {
+var setRepos = function setRepos(repos) {
   return {
-    type: SET_COUNT,
-    payload: count
+    type: SET_REPOS,
+    payload: repos
   };
 };
 
-exports.setCount = setCount;
+exports.setRepos = setRepos;
