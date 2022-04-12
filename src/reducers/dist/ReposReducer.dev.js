@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = reposReducer;
-exports.setIsFetching = exports.setRepos = void 0;
+exports.setIsCurrentPage = exports.setIsFetching = exports.setRepos = void 0;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -14,11 +14,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var SET_REPOS = 'SET_REPOS';
 var SET_IS_FETCHING = 'SET_IS_FETCHING';
+var SET_IS_CURRENT_PAGE = 'SET_IS_CURRENT_PAGE';
 var defaultState = {
   // Будем получать сюда репозитории с Github
   items: [],
   // Будет true, если будут приходить данные
-  isFetching: true
+  isFetching: true,
+  currentPage: 1,
+  perPage: 10,
+  totalCount: 0
 };
 
 function reposReducer() {
@@ -29,12 +33,18 @@ function reposReducer() {
     case SET_REPOS:
       return _objectSpread({}, state, {
         items: action.payload.items,
+        totalCount: action.payload.items,
         isFetching: false
       });
 
     case SET_IS_FETCHING:
       return _objectSpread({}, state, {
         isFetching: action.payload
+      });
+
+    case SET_IS_CURRENT_PAGE:
+      return _objectSpread({}, state, {
+        currentPage: action.payload
       });
 
     default:
@@ -59,3 +69,12 @@ var setIsFetching = function setIsFetching(bool) {
 };
 
 exports.setIsFetching = setIsFetching;
+
+var setIsCurrentPage = function setIsCurrentPage(bool) {
+  return {
+    type: SET_IS_CURRENT_PAGE,
+    payload: bool
+  };
+};
+
+exports.setIsCurrentPage = setIsCurrentPage;

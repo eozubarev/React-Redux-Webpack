@@ -13,6 +13,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var getRepos = function getRepos() {
   var searchQuery = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "stars:%3E1";
+  var currentPage = arguments.length > 1 ? arguments[1] : undefined;
+  var perPage = arguments.length > 2 ? arguments[2] : undefined;
 
   if (searchQuery == "") {
     searchQuery = "stars:%3E1";
@@ -26,7 +28,7 @@ var getRepos = function getRepos() {
           case 0:
             dispatch((0, _ReposReducer.setIsFetching)(true));
             _context.next = 3;
-            return regeneratorRuntime.awrap(_axios["default"].get("https://api.github.com/search/repositories?q=".concat(searchQuery, "&sort=stars")));
+            return regeneratorRuntime.awrap(_axios["default"].get("https://api.github.com/search/repositories?q=".concat(searchQuery, "&sort=stars&per_page=").concat(perPage, "&page").concat(currentPage)));
 
           case 3:
             response = _context.sent;
