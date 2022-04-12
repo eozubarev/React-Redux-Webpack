@@ -1,0 +1,29 @@
+.search {
+    display: flex;
+    margin: 10px 0;
+    &-input {
+        padding: 5px;
+        width: 100%;
+    }
+    &-btn {
+        padding: 5px;
+    }
+}
+
+@keyframes fetching-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.fetching {
+  display: inline-block;
+  border: 7px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #7983ff;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  animation: fetching-spin 1.2s linear infinite;
+}
